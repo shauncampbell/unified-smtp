@@ -9,7 +9,7 @@ RUN go build -o /go/bin/smtp ./cmd/smtp
 
 FROM alpine:3.12
 
-COPY --from=builder /go/bin/imap /go/bin/smtp
+COPY --from=builder /go/bin/smtp /go/bin/smtp
 LABEL maintainer="Shaun Campbell <docker@shaun.scot>"
 
 VOLUME /etc/smtp.yaml
