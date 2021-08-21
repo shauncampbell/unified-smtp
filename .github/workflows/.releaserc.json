@@ -1,0 +1,41 @@
+{
+  "branches": ["master"],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits"
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          { "path":  "../../smtp.darwin_amd64", "label":  "smtp for MacOS X (x64)"},
+          { "path":  "../../smtp.linux_amd64", "label":  "smtp for Linux (x64)"},
+          { "path":  "../../smtp.windows_amd64.exe", "label":  "smtp for Windows (x64)"}
+        ]
+      }
+    ],
+    [
+      "@eclass/semantic-release-docker",
+      {
+        "baseImageName": "shauncampbell/smtp",
+        "registries": [
+          {
+            "url": "ghcr.io",
+            "imageName": "ghcr.io/shauncampbell/unified-smtp/smtp",
+            "user": "GITHUB_USER",
+            "password": "GITHUB_TOKEN"
+          }
+        ]
+      }
+    ]
+  ]
+}

@@ -1,0 +1,7 @@
+authenticator:
+  type: in_memory
+  in_memory:
+    allowed_users:
+      user: "password"
+      john: "doe"
+      jane: "doe"
